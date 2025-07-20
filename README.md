@@ -2,7 +2,7 @@
 
 A Taylor Swift-themed weather dashboard app built with Flask and containerized with Docker. This project demonstrates basic DevOps concepts including containerization, environment variables, and API integration.
 
-![Weather Dashboard Preview](https://via.placeholder.com/600x400?text=Swift+Weather+Dashboard)
+![Weather Dashboard Preview](http://127.0.0.1:5002/)
 
 ## Features
 
