@@ -46,6 +46,13 @@
             margin-top: 20px;
             color: #777;
         }
+        .fun-message {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: rgba(255, 182, 193, 0.3); /* Light pink */
+  border-radius: 12px;
+  font-style: italic;
+}
     </style>
 </head>
 <body>
@@ -64,5 +71,10 @@
             Last updated: {{ weather.dt | timestamp_to_time }}
         </div>
     </div>
+    <!-- Add this after the weather details div -->
+<div class="fun-message">
+  <p>☔ Weather report brought to you by DevOps magic! ☀️</p>
+  <p style="font-size: 12px; margin-top: 10px;">My first containerized app - what do you think?</p>
+</div>
 </body>
 </html>
