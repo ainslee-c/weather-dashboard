@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Weather Dashboard</title>
+    <title>Swift Weather Dashboard</title>
     <meta http-equiv="refresh" content="300"> <!-- Refresh every 5 minutes -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #b8c6db 0%, #f5f7fa 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -14,22 +15,48 @@
             margin: 0;
         }
         .dashboard {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(153, 102, 204, 0.2);
+            padding: 30px;
             text-align: center;
-            width: 300px;
+            width: 320px;
+            border: 2px solid #d8bfd8;
+            position: relative;
+        }
+        .dashboard::before {
+            content: "✨";
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            font-size: 20px;
+        }
+        .dashboard::after {
+            content: "✨";
+            position: absolute;
+            bottom: -15px;
+            right: 10px;
+            font-size: 20px;
+        }
+        .swift-header h1 {
+            font-family: 'Brush Script MT', cursive;
+            color: #b666d2;
+            margin-bottom: 5px;
+        }
+        .tagline {
+            font-style: italic;
+            color: #888;
+            font-size: 14px;
         }
         .temperature {
             font-size: 48px;
             margin: 10px 0;
-            color: #333;
+            color: #6a4c93;
         }
         .city {
             font-size: 24px;
             margin-bottom: 10px;
-            color: #555;
+            color: #9673a6;
         }
         .description {
             margin: 10px 0;
@@ -46,17 +73,38 @@
             margin-top: 20px;
             color: #777;
         }
-        .fun-message {
-  margin: 15px 0;
-  padding: 10px;
-  background-color: rgba(255, 182, 193, 0.3); /* Light pink */
-  border-radius: 12px;
-  font-style: italic;
-}
+        .swift-message {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: rgba(182, 102, 210, 0.15);
+            border-radius: 12px;
+            font-style: italic;
+            color: #6a4c93;
+        }
+        .era-icons {
+            margin-top: 15px;
+            letter-spacing: 5px;
+            font-size: 18px;
+        }
+        .swift-footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+        .friendship-bracelet {
+            margin-top: 5px;
+            color: #b666d2;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
     <div class="dashboard">
+        <div class="swift-header">
+            <h1>Swift Weather</h1>
+            <p class="tagline">The weather outside is anything but treacherous today!</p>
+        </div>
+        
         <div class="city">{{ weather.name }}, {{ weather.sys.country }}</div>
         <div class="temperature">{{ weather.main.temp | round }}°F</div>
         <div class="icon">
@@ -67,14 +115,39 @@
             <div>Humidity: {{ weather.main.humidity }}%</div>
             <div>Wind: {{ weather.wind.speed }} mph</div>
         </div>
-        <div style="margin-top: 20px; font-size: 12px; color: #999;">
-            Last updated: {{ weather.dt | timestamp_to_time }}
+        
+        <div class="swift-message">
+            {% if weather.weather[0].main == "Rain" %}
+                <p>Don't forget your umbrella today! ☔</p>
+            {% elif weather.weather[0].main == "Clear" and weather.main.temp > 75 %}
+                <p>Perfect day for a road trip! 🚗</p>
+            {% elif weather.weather[0].main == "Snow" %}
+                <p>'Tis the season for hot cocoa! ☕</p>
+            {% elif weather.weather[0].main == "Clouds" %}
+                <p>A little gray but we're feeling okay! ☁️</p>
+            {% else %}
+                <p>Whatever the weather, we're in this together! 💫</p>
+            {% endif %}
+        </div>
+        
+        <div class="era-icons">
+            <span title="Debut">🌟</span>
+            <span title="Fearless">👑</span>
+            <span title="Speak Now">💜</span>
+            <span title="Red">🧣</span>
+            <span title="1989">📷</span>
+            <span title="Reputation">🐍</span>
+            <span title="Lover">💖</span>
+            <span title="Folklore">🌲</span>
+            <span title="Evermore">🍂</span>
+            <span title="Midnights">✨</span>
+            <span title="The Tortured Poets Department">📝</span>
+        </div>
+        
+        <div class="swift-footer">
+            Weather updates every 5 minutes
+            <div class="friendship-bracelet">⟡═══════⟡</div>
         </div>
     </div>
-    <!-- Add this after the weather details div -->
-<div class="fun-message">
-  <p>☔ Weather report brought to you by DevOps magic! ☀️</p>
-  <p style="font-size: 12px; margin-top: 10px;">My first containerized app - what do you think?</p>
-</div>
 </body>
 </html>
